@@ -1,0 +1,65 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+body header {
+  background-color: #004aad;
+  padding: 1rem;
+}
+body header .main-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+body header .main-nav ul li {
+  margin-right: 1.5rem;
+}
+body header .main-nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+body header .main-nav ul li a:hover {
+  text-decoration: underline;
+}
+body header .main-nav ul li a.active {
+  font-weight: bold;
+}
+body .player-list {
+  padding: 2rem;
+}
+body .player-list .player-card {
+  background-color: #e0e0e0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+body .player-list .player-card:hover {
+  transform: scale(1.02);
+}
+body .player-list .player-card h2 {
+  margin: 0 0 0.5rem 0;
+}
+body .player-list .add-player-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #004aad;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.3rem;
+}
+body .player-list .add-player-btn:hover {
+  background-color: rgb(0, 52.1849710983, 122);
+}
+body footer {
+  background-color: #004aad;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/*# sourceMappingURL=main.css.map */
