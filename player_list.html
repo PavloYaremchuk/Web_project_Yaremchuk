@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Players List</title>
+    <link rel="stylesheet" href="{% static 'myapp3/css/main.css' %}">
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#" class="active">Players</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="player-list">
+    <h1>List of Players</h1>
+    <ul id="playerList">
+      {% for player in players %}
+      <li class="player-card" data-player-id="{{ player.id }}">
+        <div class="card-header">
+          <a href="#" class="player-name" data-player-id="{{ player.id }}">
+            {{ player.player_name }} {{ player.player_surname }}
+          </a>
+          <button class="delete-btn">Delete</button>
+        </div>
+        <div class="player-details" id="details-{{ player.id }}"></div>
+      </li>
+      {% empty %}
+      <li>No players found.</li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'add_player_ajax' %}" class="add-player-btn">Add New Player</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Basketball Team</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'myapp3/js/player_toggle.js' %}"></script>
+  <script src="{% static 'myapp3/js/deletePlayer.js' %}"></script>
+</body>
+</html>
