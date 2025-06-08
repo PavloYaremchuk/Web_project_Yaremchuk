@@ -43,6 +43,21 @@ body .player-list .player-card:hover {
 body .player-list .player-card h2 {
   margin: 0 0 0.5rem 0;
 }
+body .player-list .delete-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+body .player-list .delete-btn:hover {
+  background-color: rgb(213.698630137, 43.8356164384, 26.301369863);
+}
 body .player-list .add-player-btn {
   display: inline-block;
   margin-top: 1rem;
@@ -54,6 +69,12 @@ body .player-list .add-player-btn {
 }
 body .player-list .add-player-btn:hover {
   background-color: rgb(0, 52.1849710983, 122);
+}
+body .player-list .player-card .card-header {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 body footer {
   background-color: #004aad;

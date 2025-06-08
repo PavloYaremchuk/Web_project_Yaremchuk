@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Player </title>
+  <link rel="stylesheet" href="{% static 'myapp3/css/style.css' %}">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Add New Player</h1>
+    <form id="ajaxPlayerForm">
+      <input type="text" name="player_name" placeholder="Name" required>
+      <input type="text" name="player_surname" placeholder="Surname" required>
+      <input type="text" name="player_position" placeholder="Position" required>
+      <input type="number" name="player_number" placeholder="Number" required>
+      <select name="team" required>
+        <option value="">— Select Team —</option>
+        {% for t in teams %}
+          <option value="{{ t.id }}">{{ t.team_name }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">Save</button>
+    </form>
+    <p id="msg"></p>
+    <a href="{% url 'player_list' %}">← Back to Player List</a>
+  </div>
+
+  <script src="{% static 'myapp3/js/addPlayer.js' %}"></script>
+</body>
+</html>

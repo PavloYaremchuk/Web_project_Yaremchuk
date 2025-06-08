@@ -1,36 +1,37 @@
-const form = document.getElementById('player-form');
-const msg = document.getElementById('message');
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('ajaxPlayerForm');
+    const msg  = document.getElementById('msg');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();              // зупиняємо стандартну відправку форми
-    msg.textContent = 'Saving...';
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        msg.textContent = 'Saving…';
+        const data = Object.fromEntries(new FormData(form).entries());
 
-    // Готуємо дані з форми
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+        try {
+            const resp = await fetch('/api/all-players/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken(),
+                },
+                body: JSON.stringify(data),
+            });
+            if (!resp.ok) throw resp;
+            const json = await resp.json();
+            msg.textContent = `Player added!`;
+            form.reset();
+        } catch (err) {
+            msg.style.color = 'red';
+            msg.textContent = 'Error saving player';
+            console.error(err);
+        }
+    });
 
-    try {
-        const resp = await fetch('/api/players/', {   // Django REST endpoint
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: JSON.stringify(payload),
-        });
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        const data = await resp.json();
-        msg.textContent = `Player ${data.player_name} added successfully!`;
-        form.reset();
-    } catch (err) {
-        msg.textContent = `Error: ${err.message}`;
+    function getCSRFToken() {
+        const name='csrftoken';
+        return document.cookie.split(';')
+            .map(c=>c.trim())
+            .find(c=>c.startsWith(name+'='))
+            ?.split('=')[1];
     }
 });
-
-// Функція для читання cookie (CSRF)
-function getCookie(name) {
-    const matches = document.cookie.match(new RegExp(
-        `(?:^|; )${name.replace(/([$?*|{}()[\]\\/+^])/g, '\\$1')}=([^;]*)`
-    ));
-    return matches ? decodeURIComponent(matches[1]) : '';
-}
