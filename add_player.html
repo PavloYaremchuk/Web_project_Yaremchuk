@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add New Player</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <h1>Add Player</h1>
+  <form id="player-form">
+    <label>
+      Player name:
+      <input type="text" name="player_name" required>
+    </label>
+    <label>
+      Player surname:
+      <input type="text" name="player_surname" required>
+    </label>
+    <label>
+      Player position:
+      <input type="text" name="player_position" required>
+    </label>
+    <label>
+      Player number:
+      <input type="number" name="player_number" required>
+    </label>
+    <label>
+      Team:
+      <input type="text" name="team" required>
+    </label>
+    <button type="submit">Save</button>
+  </form>
+  <p id="message"></p>
+
+  <script type="module" src="../js/addPlayer.js"></script>
+</body>
+</html>
